@@ -8,10 +8,9 @@ import altair as alt
 from PIL import Image
 import pickle
 
-# Abrimos nuestras tablas
-
-with open('../data/data_eda_total.pkl', 'rb') as dt:
-    data_total = pickle.load(dt)
+archivos = ['../data/data_eda_total_parte_1.csv', '../data/data_eda_total_parte_2.csv', '../data/data_eda_total_parte_3.csv', '../data/data_eda_total_parte_4.csv', '../data/data_eda_total_parte_5.csv', '../data/data_eda_total_parte_6.csv']
+dataframes = [pd.read_csv(archivo) for archivo in archivos]
+data_total = pd.concat(dataframes, ignore_index=True)
 
 data_1= data_total.iloc[:500000]
 
@@ -19,10 +18,7 @@ st.title('Data Analysis')
 
 st.dataframe(data_1.head())
 
-#amount_den = Image.open('../data/images/amount_den.png')
-#correlation = Image.open('../data/images/Correlacion.png')
 roc = Image.open('../data/images/Curva_roc.png')
-#fraud_type = Image.open('../data/images/fraud_type.png')
 matrix = Image.open('../data/images/Matriz_confusion.png')
 
 # Diagrama de barras donde se ven los tipos de transacción
