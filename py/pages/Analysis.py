@@ -4,7 +4,8 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.figure_factory as ff
-#from streamlit_lottie import st_lottie
+from streamlit_lottie import st_lottie
+import requests
 import altair as alt
 from PIL import Image
 import pickle
@@ -19,27 +20,49 @@ dataframes = [pd.read_csv(archivo) for archivo in archivos]
 data_total = pd.concat(dataframes, ignore_index=True)
 data_1= data_total.iloc[:500000]
 
+# Función para cargar mi url de lottie
+def load_lottieurl(url):
+  r = requests.get(url)
+  if r.status_code != 200:
+    return None
+  return r.json()
+
 # Cargamos las imagenes que vamos a querer subir
 roc = Image.open('../data/images/Curva_roc.png')
 matrix = Image.open('../data/images/Matriz_confusion.png')
-#lottie_coding = load_lottieurl("https://lottie.host/83c0e8d8-892d-4909-8d6e-9e84888956f9/k1JaZ8212t.json")
+lottie_coding = load_lottieurl("https://lottie.host/83c0e8d8-892d-4909-8d6e-9e84888956f9/k1JaZ8212t.json")
 
 st.title('Data Analysis')
 
 st.dataframe(data_1.head())
 
-add_selectbox = st.sidebar.selectbox('Choose the analysis',('Transaction types', 
+add_selectbox = st.sidebar.selectbox('Choose the analysis',('Objetive', 'Transaction types', 
                                      'Density', 'Confussion matrix', 'ROC curve'))
+
+
+if add_selectbox == 'Objetive':
+    with st.container():
+        st.write("---")
+        left_column, right_column = st.columns(2)
+    with left_column:
+        st.header("My objetive")
+        st.write(
+        """
+            illo que pasa
+        """
+        )
+    with right_column:
+        st_lottie(lottie_coding, height=300, key="coding")
 
 if add_selectbox == 'Transaction types':
     # Diagrama de barras donde se ven los tipos de transacción
     st.markdown('<p style="font-size:30px">Transaction Types</p>', unsafe_allow_html=True)
     st.bar_chart(data_total['Type'].value_counts().sort_values(ascending=False))
-
+    st.write("---")
     data_fraud = data_total[data_total['Fraud'] == 1]
     st.markdown('<p style="font-size:30px">Fraudulent Transaction Types</p>', unsafe_allow_html=True)
     st.bar_chart(data_fraud['Type'].value_counts().sort_values(ascending=False))#, color=['#03BD81'])
-
+    st.write("---")
     # Balanceo de transacciones fraudulentas
     st.markdown('<p style="font-size:30px">Transaction Balance</p>', unsafe_allow_html=True)
     count_fraud = data_total['Fraud'].value_counts()
@@ -75,6 +98,20 @@ if add_selectbox == 'Density':
 if add_selectbox == 'Confussion matrix':
     #Matrix
     st.markdown('<p style="font-size:40px">Random Forest Analysis</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size:30px">Metrics</p>', unsafe_allow_html=True)
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.metric(label='', value='Not Fraud')
+        st.metric(label = '', value='Fraud')
+    with col2:
+        st.metric(label='Precision', value='0,99')
+        st.metric(label = '', value='0,99')
+    with col3:
+        st.metric(label='Recall', value='0,99')
+        st.metric(label = '', value='1,00')
+    with col4:
+        st.metric(label='F1 Score', value='0,99')
+        st.metric(label = '', value='0,99')
     st.markdown('<p style="font-size:30px">Confussion Matrix</p>', unsafe_allow_html=True)
     st.image(matrix, caption='Confussion Matrix')
 if add_selectbox == 'ROC curve':
