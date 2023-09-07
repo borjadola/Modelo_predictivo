@@ -1,11 +1,11 @@
-Streamlit
-Pandas
-Numpy
-Pickle
-Seaborn
-Matplotlib.pyplot
-Plotly.figure_factory
-Streamlit_lottie import st_lottie
-Requests
-Altair
-Image
+
+streamlit
+pandas
+numpy
+pickle
+seaborn
+matplotlib
+plotly
+streamlit-lottie
+requests
+altair
