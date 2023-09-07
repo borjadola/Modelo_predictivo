@@ -7,12 +7,35 @@ Análisis exploratorio de los datos de una entidad financiera ficticia donde se 
 
 Se han preparado para entrenar un modelo de machine learning de aprendizaje supervisado e identificar los casos de fraude. He utilizado tres tipos de modelos de clasificación.
 
-En esta URL podemos realizar consultas sobre transacciones en el apartado de "Modelo" y visualizar los resultados de los datos obtenidos.
+En este entorno de streamlit podemos realizar consultas sobre transacciones en el apartado de "Modelo" y visualizar los resultados de los datos obtenidos.
 
 IMAGEN1
 
-![Image](https://github.com/borjadola/Proyecto_ETC_Precipitaciones/blob/main/data/imagenes/prec_19-22_cadiz.png)
+![streamlit1](https://github.com/borjadola/Modelo_predictivo/assets/132678800/323cb69e-1d89-405a-97d9-1c41ec2a5d98)
+
+![streamlit2](https://github.com/borjadola/Modelo_predictivo/assets/132678800/190baed6-b6b9-426d-b810-56c2d4cedace)
+
+## Requisitos de sistema
+
+Para la ejecución del entorno en la computadora deberán realizarse los siguientes pip install en nuestra terminal:
+
+- pip install pandas
+- pip install lottie
+- pip install requests
+- pip install streamlit
+- pip install pickle
+- pip install numpy
+
+Ejecutaremos en nuestra terminal, una vez situados en la carpeta Model.py, "streamlit run Model.py" para abrir la web como local host.
 
 ## Fuentes
 
-[API AEMET](https://opendata.aemet.es/centrodedescargas/inicio)
+[DATASET](https://www.kaggle.com/datasets/chitwanmanchanda/fraudulent-transactions-data)
+
+[RANDOM FOREST DOC](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)
+
+[DECISION TREE DOC](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)
+
+[LOGISTIC REGRESSION](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
+
+[PANDAS LIBRARY](https://pandas.pydata.org/docs/user_guide/index.html#user-guide)
