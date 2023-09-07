@@ -1,9 +1,0 @@
-streamlit
-pandas
-numpy
-seaborn
-matplotlib
-plotly
-streamlit-lottie
-requests
-altair
