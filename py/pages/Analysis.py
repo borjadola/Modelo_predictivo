@@ -48,11 +48,24 @@ if add_selectbox == 'Objetive':
         st.header("My objetive")
         st.write(
         """
-            illo que pasa
+            I have conducted an exploratory analysis of the data from a fictitious financial 
+            institution where fraud has been detected in a series of bank transactions. In 
+            particular, more than 6 million transactions. These data have been prepared to 
+            train a supervised machine learning model to identify fraudulent cases. Three 
+            types of models have been trained with good results. In this website, we can 
+            make queries about transactions in the "Model" section and visualize the results 
+            of the data obtained.
         """
         )
     with right_column:
         st_lottie(lottie_coding, height=300, key="coding")
+    st.write("---")
+    st.markdown('<p style="font-size:30px">Data sources:</p>', unsafe_allow_html=True)
+    st.write("[DATASET >](https://www.kaggle.com/datasets/chitwanmanchanda/fraudulent-transactions-data)")
+    st.write("[RANDOM FOREST DOC >](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)")
+    st.write("[DECISION TREE DOC >](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)")
+    st.write("[LOGISTIC REGRESSION >](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)")
+    st.write("[PANDAS LIBRARY >](https://pandas.pydata.org/docs/user_guide/index.html#user-guide)")
 
 if add_selectbox == 'Transaction types':
     # Diagrama de barras donde se ven los tipos de transacción
@@ -114,6 +127,13 @@ if add_selectbox == 'Confussion matrix':
         st.metric(label = '', value='0,99')
     st.markdown('<p style="font-size:30px">Confussion Matrix</p>', unsafe_allow_html=True)
     st.image(matrix, caption='Confussion Matrix')
+    col5, col6, = st.columns(2)
+    with col5:
+        st.metric(label='', value='2.433')
+        st.metric(label='', value='9')
+    with col6:
+        st.metric(label='', value='31')
+        st.metric(label='', value='2.455')
 if add_selectbox == 'ROC curve':
     #ROC
     st.markdown('<p style="font-size:40px">Random Forest Analysis</p>', unsafe_allow_html=True)
