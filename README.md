@@ -1,5 +1,5 @@
 # Modelo predictivo para fraude bancario
-Proyecto final del bootcamp de Análisis de datos en IronHack
+Proyecto final del bootcamp de Análisis de datos en IronHack orientado a la búsqueda de fraude en transacciones bancarias.
 
 ## Objetivo
 
